@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charset="utf-8" />
         {/* Twitter card data */}
-        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:card" content="summary" />
         {/* meta Facebook and LinkedIn OpenGraph */}
         {/* ATTENTION: A REPRENDRE (urls, description , etc ...)!!!!!!!!!!!!!!!!!!!!!!! */}
         <meta property="og:title" content="accueil" />
@@ -22,9 +22,15 @@ export default function Home() {
         <meta property="og:description" content="Charles Cantin photographe" />
         <meta property="og:site_name" content="Charles Cantin" />
         <meta property="og:type" content="accueil" />
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap');
+          @import
+          url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Montserrat:wght@200&display=swap');
+        </style>
       </Head>
       <Layout>
-        <h1>Hello</h1>
+        
       </Layout>
     </div>
   );
