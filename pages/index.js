@@ -30,7 +30,9 @@ export default function Home() {
         </style>
       </Head>
       <Layout>
-        
+        <div className="homeHeight">
+          
+        </div>
       </Layout>
     </div>
   );
