@@ -76,5 +76,5 @@
 
 /* apparition of mobile menu */
 .mobile-menu-open {
-  display: none;
+  display: block;
 }

@@ -16,12 +16,12 @@ export default function Header() {
   }
 
   return (
-    <div className="h-24 bg-lightViolet">
+    <div className="h-20 bg-lightViolet">
       <div className="flex justify-between items-center h-full px-2 md:px-4">
         <div className=" static">
           <img
-            className="h-16 md:h-20 absolute top-4 md:top-2 border-white border"
-            src="/Logo.PNG"
+            className="h-16 absolute top-2 border-white border"
+            src="/icons/Logo.PNG"
             alt="lOGO"
           />
         </div>
@@ -55,7 +55,7 @@ export default function Header() {
         </div>
       </div>
       {/* mobile menu */}
-      <div ref={mobileMenu} className="text-white bg-gray-400 md:hidden">
+      <div ref={mobileMenu} className="relative z-10 text-white bg-gray-400 hidden md:hidden">
         <ul className="flex flex-col font-Montserrat text-xs ">
           <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
             <Link href="/">ACCUEIL</Link>

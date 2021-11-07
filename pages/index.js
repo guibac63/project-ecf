@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../Components/Layout";
+import Image from "next/image"
 
 export default function Home() {
   return (
@@ -30,8 +31,8 @@ export default function Home() {
         </style>
       </Head>
       <Layout>
-        <div className="homeHeight">
-          
+        <div className="relative z-0 homeHeight">
+          <Image src="/photos/tree.jpg" layout="fill" alt="tree" quality={100} objectFit="cover"/>
         </div>
       </Layout>
     </div>

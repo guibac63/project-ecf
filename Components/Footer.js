@@ -3,34 +3,40 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="h-28 md:h-24 bg-lightViolet text-white">
-      <div className="flex items-center h-full font-JosefinSans text-xs lg:text-lg">
-        <ul className="flex w-4/6 h-3/6 justify-around mx-auto">
-          <li className="flex items-center">Charles Cantin</li>
-          <li className="flex items-center">
+    <div className="h-36 md:h-20 bg-lightViolet text-white">
+      <div className="flex md:items-center h-full font-JosefinSans text-xs lg:text-lg">
+        <ul className="relative flex flex-col pt-3 md:flex-row md:w-4/6 md:h-full md:justify-around md:items-center mx-auto">
+          <li className="flex items-center pb-2 md:pb-0 mx-auto md:mx-0">
+            Charles Cantin
+          </li>
+          <li className="flex items-center pb-2 md:pb-0 mx-auto md:mx-0">
             {/* SVG Mail icon */}
-            <Image src="/mail.svg" height="20rem" width="20rem" />
+            <img className="h-4 lg:h-5" src="/icons/mail.svg" alt="tree" />
             <a
-              className="ml-2 inline align-text-bottom"
+              className="ml-1 inline align-text-bottom"
               href="mailto:chcantin@gmail.com"
             >
               chcantin@gmail.com
             </a>
           </li>
-          <li className="flex items-center ">
-            <Image src="/phone.svg" height="20rem" width="20rem" />
-            <a className="ml-2 " href="tel:0607502051">
+          <li className="flex leading-5 pb-2 md:pb-0 mx-auto  md:mx-0">
+            <img className="h-4 lg:h-4" src="/icons/phone.svg" alt="phone" />
+            <a className="ml-1" href="tel:0607502051">
               06-07-50-20-51
             </a>
           </li>
-          <li className="flex items-center ">
+          <li className="absolute bottom-6 left-5 md:relative md:bottom-0 md:left-0 md:flex items-center md:mb-2">
             <a href="#">
-              <Image src="/facebook.svg" height="40rem" width="40rem" />
+              <img
+                className="h-8 lg:h-10"
+                src="/icons/facebook.svg"
+                alt="facebook icon"
+              />
             </a>
           </li>
-          <li className="flex items-center ">
+          <li className="absolute bottom-6 right-6 md:relative md:bottom-0 md:right-0  md:flex items-center md:mb-2">
             <a href="">
-              <Image src="/instagram.svg" height="40rem" width="40rem" />
+              <img className="h-8 lg:h-10 " src="/icons/instagram.svg" alt="" />
             </a>
           </li>
         </ul>
