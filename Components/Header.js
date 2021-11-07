@@ -20,7 +20,7 @@ export default function Header() {
       <div className="flex justify-between items-center h-full px-2 md:px-4">
         <div className=" static">
           <img
-            className="h-16 absolute top-2 border-white border"
+            className="absolute h-14 top-3 md:h-16 md:top-2 border-white border"
             src="/icons/Logo.PNG"
             alt="lOGO"
           />
@@ -43,7 +43,7 @@ export default function Header() {
           </ul>
         </div>
         <div>
-          <div className="text-white flex md:hidden ">
+          <div className="text-white flex md:hidden">
             SVG
             <div onClick={(evt) => handleMenu(evt)} id="nav-icon3">
               <span></span>
@@ -54,8 +54,11 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {/* mobile menu */}
-      <div ref={mobileMenu} className="relative z-10 text-white bg-gray-400 hidden md:hidden">
+      {/* mobile menu : display when pass to mobile format and click on hamburger icon menu*/}
+      <div
+        ref={mobileMenu}
+        className="relative z-10 text-white bg-gray-400 hidden md:hidden"
+      >
         <ul className="flex flex-col font-Montserrat text-xs ">
           <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
             <Link href="/">ACCUEIL</Link>

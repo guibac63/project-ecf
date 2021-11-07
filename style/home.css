@@ -1,3 +1,12 @@
+/* height auto of the main part of homepage */
 .homeHeight {
   height: calc(100vh - 10rem);
+}
+
+/* principal title centered */
+.titleCenter{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 }
