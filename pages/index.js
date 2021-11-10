@@ -39,11 +39,15 @@ export default function Home() {
             alt="tree"
             quality={100}
             objectFit="cover"
+            loading="eager"
+            priority={true}
           />
           {/* Main title of the application */}
           <h1 className="z-50 text-white titleCenter text-center">
             <span className="text-xl md:text-5xl">Charles CANTIN</span> <br />
-            <span className="font-JosefinSans text-xl md:text-2xl">Photographe</span>
+            <span className="font-JosefinSans text-xl md:text-2xl">
+              Photographe
+            </span>
           </h1>
         </div>
       </Layout>

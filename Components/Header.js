@@ -8,11 +8,17 @@ export default function Header() {
 
 
   const mobileMenu = useRef()
-
+  
+  
   // display and hide mobile menu on toggle hamburger button
   const handleMenu = (evt) => {
     evt.currentTarget.classList.toggle('open');
     mobileMenu.current.classList.toggle('hidden');
+
+    // mobileMenu.current.classList.contains("hidden")
+    //   ?  mobileMenu.current.classList.toggle("menuSlideIn")
+    //   : mobileMenu.current.classList.toggle("menuSlideOut");
+    //    console.log(mobileMenu.current.classList);
   }
 
   return (

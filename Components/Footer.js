@@ -1,15 +1,10 @@
 import React from "react";
-import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="h-36 md:h-20 bg-lightViolet text-white">
+    <div className="relative h-36 md:h-20 bg-lightViolet text-white">
       <div className="flex md:items-center h-full font-JosefinSans text-xs lg:text-lg">
         <ul className="relative flex flex-col pt-3 md:flex-row md:w-4/6 md:h-full md:justify-around md:items-center mx-auto">
-          {/* name of the owner */}
-          <li className="flex items-center pb-2 md:pb-0 mx-auto md:mx-0">
-            Charles Cantin
-          </li>
           {/* Mail */}
           <li className="flex items-center pb-2 md:pb-0 mx-auto md:mx-0">
             {/* SVG Mail icon */}
@@ -27,6 +22,10 @@ export default function Footer() {
             <a className="ml-1" href="tel:0607502051">
               06-07-50-20-51
             </a>
+          </li>
+          {/* legal mentions */}
+          <li className="flex items-center pb-2 md:pb-0 mx-auto md:mx-0">
+            <a href="#">Mentions légales</a>
           </li>
           {/* Facebook icon */}
           <li className="absolute bottom-6 left-5 md:relative md:bottom-0 md:left-0 md:flex items-center md:mb-2">

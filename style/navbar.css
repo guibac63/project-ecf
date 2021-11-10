@@ -75,6 +75,31 @@
 }
 
 /* apparition of mobile menu */
-.mobile-menu-open {
-  display: block;
+
+.menuSlideIn{
+  transition: slideIn 1s ease-in-out ;
+}
+
+.menuSlideOut{
+  transition: slideOut 1s ease-in-out ;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    height: translateX(250px);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    height: 100%;
+  }
+
+  to {
+    height: 0%;
+  }
 }
