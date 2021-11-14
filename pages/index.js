@@ -43,8 +43,11 @@ export default function Home() {
             priority={true}
           />
           {/* Main title of the application */}
-          <h1 className="z-50 text-white titleCenter text-center font-Montserrat font-semibold">
-            <span className="text-xl md:text-5xl">Charles CANTIN</span> <br />
+          <h1 className="z-50 text-white titleCenter text-center font-Montserrat ">
+            <span className="text-xl md:text-5xl font-semibold">
+              Charles CANTIN
+            </span>{" "}
+            <br />
             <span className="font-JosefinSans text-xl md:text-2xl">
               Photographe
             </span>

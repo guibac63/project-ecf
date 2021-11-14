@@ -1,9 +1,11 @@
 import React from 'react'
 import Layout from '../Components/Layout'
+import Head from "next/head";
 
 export default function Contact() {
   return (
     <div>
+
       <Layout>
         <div className="contactHeight">
           <div className="py-8 w-5/5 xs:w-4/5 sm:w-4/6 md:w-3/6 xl:w-2/6 xl:h-5/6 mx-auto mt-2">
@@ -13,7 +15,7 @@ export default function Contact() {
             <div className=" border-2 border-darkViolet h-full bg-extraLightViolet mx-4 shadow-xl">
               <form
                 className="font-JosefinSans flex flex-col p-4 lg:p-6 mx-6 lg:mx-2 xl:mx-0"
-                action="POST"
+                method="POST"
                 name="photo-contact-form"
                 data-netlify="true"
                 action="/Success"

@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Layout from "../Components/Layout";
 import path, { join } from "path";
 import fs from "fs";
@@ -11,12 +12,20 @@ export default function Prestation({mkPresta}) {
 
   return (
     <div>
+      <Head>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap');
+          @import
+          url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Montserrat:wght@200&display=swap');
+        </style>
+      </Head>
       <Layout>
         <div className="homeHeight grid grid-cols-1 gap-6 px-4 xs:grid-cols-2 xs:px-4 xs:gap-4 md:gap-16 2xl:gap-28 md:px-24 lg:grid-cols-3 py-6 ">
           {mkPresta.map((presta) => {
             //extract data within the markdown
             const { dataMarkDown } = presta;
-            const {content} = presta
+            const { content } = presta;
 
             //render every prestation layout with all markdown data
             return (

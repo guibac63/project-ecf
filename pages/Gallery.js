@@ -4,6 +4,7 @@ import path, { join } from "path";
 import fs from "fs";
 import matter from "gray-matter";
 import Image from "next/dist/client/image";
+import Head from "next/head";
 
 export default function Gallery({ mkImage }) {
   const [selectCategory, setSelectCategory] = useState("");
@@ -17,6 +18,14 @@ export default function Gallery({ mkImage }) {
   const GalleryPhoto = ({photoSelection}) =>{
     return (
       <div className="flex flex-wrap p-2 gallery justify-center items-center min-h-3/4">
+        <Head>
+          <style>
+            @import
+            url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap');
+            @import
+            url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Montserrat:wght@200&display=swap');
+          </style>
+        </Head>
         {photoSelection.map((image, index) => {
           return (
             <div
