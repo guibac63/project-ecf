@@ -1,0 +1,7 @@
+.contactHeight {
+  min-height: calc(100vh - 10rem);
+}
+
+.contactFormHeight {
+  min-height: 1550px;
+}

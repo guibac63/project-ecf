@@ -40,7 +40,7 @@ export default function Footer() {
           {/* Instagram icon */}
           <li className="absolute bottom-6 right-6 md:relative md:bottom-0 md:right-0  md:flex items-center md:mb-2">
             <a href="">
-              <img className="h-8 lg:h-10 " src="/icons/instagram.svg" alt="" />
+              <img className="h-8 lg:h-10 " src="/icons/instagram.svg" alt="instagram icon" />
             </a>
           </li>
         </ul>

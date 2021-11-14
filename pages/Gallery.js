@@ -15,7 +15,6 @@ export default function Gallery({ mkImage }) {
 
   // component that represents the layout of a picture in the gallery
   const GalleryPhoto = ({photoSelection}) =>{
-    console.log(photoSelection)
     return (
       <div className="flex flex-wrap p-2 gallery justify-center items-center min-h-3/4">
         {photoSelection.map((image, index) => {
@@ -48,15 +47,16 @@ export default function Gallery({ mkImage }) {
     );
   }
 
+  //----------
 
   return (
     <div>
       <Layout>
         <div className="homeHeight flex flex-col relative">
           <div className="h-32 flex justify-center">
-            <h1 className="pt-4 font-Montserrat text-xl md:text-5xl font-semibold text-lightGreen">
+            {/* <h1 className="pt-4 font-Montserrat text-xl md:text-5xl font-semibold text-lightGreen">
               Galerie
-            </h1>
+            </h1> */}
           </div>
           <div className="absolute right-1/2 top-20 translate-x-1/2 border-2 border-black rounded-xl py-1 px-3 font-JosefinSans text-sm md:text-lg text-lightViolet">
             <label for="categorie-select">Catégorie:</label>
