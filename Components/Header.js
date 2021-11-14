@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <div className="h-20 bg-lightViolet">
       <div className="flex justify-between items-center h-full px-2 md:px-4">
-        <div className=" static">
+        <div className="static">
           <img
             className="absolute h-14 top-3 md:h-16 md:top-2 border-white border"
             src="/icons/Logo.PNG"
@@ -32,7 +32,7 @@ export default function Header() {
           />
         </div>
         {/* desktop menu */}
-        <div className="text-white w-3/6 hidden md:block ">
+        <div className="text-white w-3/6 hidden md:block">
           <ul className="flex justify-around font-Montserrat text-xs md:text-base">
             <li className="hover:font-bold">
               <Link href="/">ACCUEIL</Link>

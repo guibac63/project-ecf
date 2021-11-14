@@ -14,6 +14,9 @@ export default function Contact() {
               <form
                 className="font-JosefinSans flex flex-col p-4 lg:p-6 mx-6 lg:mx-2 xl:mx-0"
                 action="POST"
+                name="photo-contact-form"
+                data-netlify="true"
+                action="/Success"
               >
                 <label
                   className="text-lightGreen font-semibold my-2 md:text-xl"
@@ -45,7 +48,7 @@ export default function Contact() {
                 </label>
                 <input
                   className="lg:w-2/3 p-2"
-                  type="text"
+                  type="mail"
                   placeholder="E-mail"
                   id="email"
                   name="email"
@@ -75,13 +78,22 @@ export default function Contact() {
                 >
                   Message
                 </label>
-                <textarea className="p-2" id="message" name="message" rows="3" />
+                <textarea
+                  className="p-2"
+                  id="message"
+                  name="message"
+                  rows="3"
+                />
                 <button
                   className="mt-4 bg-darkGreen px-2 2xl:w-1/4 h-10 text-white font-semibold rounded-lg mx-auto"
                   type="submit"
                 >
                   <span>ENV</span>
-                  <img className="h-4 mb-1 inline" src="/icons/lens.svg" alt="lens icon" />
+                  <img
+                    className="h-4 mb-1 inline"
+                    src="/icons/lens.svg"
+                    alt="lens icon"
+                  />
                   <span>YER</span>
                 </button>
               </form>
