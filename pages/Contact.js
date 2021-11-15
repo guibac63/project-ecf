@@ -1,11 +1,18 @@
-import React from 'react'
-import Layout from '../Components/Layout'
+import React from "react";
+import Layout from "../Components/Layout";
 import Head from "next/head";
 
 export default function Contact() {
   return (
     <div>
-
+      <Head>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap');
+          @import
+          url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Montserrat:wght@200&display=swap');
+        </style>
+      </Head>
       <Layout>
         <div className="contactHeight">
           <div className="py-8 w-5/5 xs:w-4/5 sm:w-4/6 md:w-3/6 xl:w-2/6 xl:h-5/6 mx-auto mt-2">
@@ -18,8 +25,14 @@ export default function Contact() {
                 method="POST"
                 name="photo-contact-form"
                 data-netlify="true"
-                action="/Success"
+                action="/success"
               >
+                {/* hidden input to allow netlify form works in Next js */}
+                <input
+                  type="hidden"
+                  name="form-name"
+                  value="photo-contact-form"
+                />
                 <label
                   className="text-lightGreen font-semibold my-2 md:text-xl"
                   htmlFor="nom"
