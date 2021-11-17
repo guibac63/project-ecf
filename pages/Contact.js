@@ -8,8 +8,27 @@ export default function Contact() {
   
   const {register,handleSubmit,formState:{errors}} = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data)
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  }
+
+  const onSubmit = (data,event) => {
+    event.preventDefault()
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "photo-contact-form",
+        ...data
+      }),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
+      console.log(data)
   }
 
   return (
@@ -148,6 +167,7 @@ export default function Contact() {
                   className="lg:w-1/2 p-2"
                   name="categoryphoto"
                   id="categoryphoto"
+                  {...register("categoryphoto")}
                 >
                   <option value=""></option>
                   <option value="mariage">Mariage</option>
@@ -168,6 +188,7 @@ export default function Contact() {
                   id="message"
                   name="message"
                   rows="3"
+                  {...register("message")}
                 />
                 <button
                   className="mt-4 bg-darkGreen px-2 2xl:w-1/4 h-10 text-white font-semibold rounded-lg mx-auto"
