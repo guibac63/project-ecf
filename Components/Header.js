@@ -66,18 +66,26 @@ export default function Header() {
         className="relative z-10 text-white bg-gray-400 hidden md:hidden"
       >
         <ul className="flex flex-col font-Montserrat text-xs ">
-          <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
-            <Link href="/">ACCUEIL</Link>
-          </li>
-          <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
-            <Link href="/Gallery">GALERIE</Link>
-          </li>
-          <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
-            <Link href="/Prestation">PRESTATIONS</Link>
-          </li>
-          <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
-            <Link href="/Contact">CONTACT</Link>
-          </li>
+          <Link href="/">
+            <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
+              ACCUEIL
+            </li>
+          </Link>
+          <Link href="/Gallery">
+            <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
+              GALERIE
+            </li>
+          </Link>
+          <Link href="/Prestation">
+            <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
+              PRESTATIONS
+            </li>
+          </Link>
+          <Link href="/Contact">
+            <li className="border-t-2 p-2 hover:bg-gray-600 hover:font-bold">
+              CONTACT
+            </li>
+          </Link>
         </ul>
       </div>
     </div>

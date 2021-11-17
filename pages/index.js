@@ -33,17 +33,19 @@ export default function Home() {
       <Layout>
         {/* background image of the application */}
         <div className="relative z-0 homeHeight">
-          <Image
-            src="/photos/tree.jpg"
-            layout="fill"
-            alt="tree"
-            quality={100}
-            objectFit="cover"
-            loading="eager"
-            priority={true}
-          />
+          <div className="z-0">
+            <Image
+              src="/photos/tree.jpg"
+              layout="fill"
+              alt="tree"
+              quality={100}
+              objectFit="cover"
+              loading="eager"
+              priority={true}
+            />
+          </div>
           {/* Main title of the application */}
-          <h1 className="z-50 text-white titleCenter text-center font-Montserrat ">
+          <h1 className="z-10 text-white titleCenter text-center font-Montserrat ">
             <span className="text-xl md:text-5xl font-semibold">
               Charles CANTIN
             </span>{" "}

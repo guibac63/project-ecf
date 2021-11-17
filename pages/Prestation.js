@@ -44,11 +44,26 @@ export default function Prestation({mkPresta}) {
                 <h3 className="text-center mt-2 mx-10 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
                   {dataMarkDown.description}
                 </h3>
-                <h3 className="text-center mb-2 mx-10 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
-                  {dataMarkDown.price}{" "}
+                <h3
+                  className={[
+                    "text-center",
+                    "mx-5",
+                    "font-semibold",
+                    "font-JosefinSans",
+                    "xl:text-lg",
+                    "text-lightViolet",
+                    dataMarkDown.title === "Famille" ? "mb-2" : "mb-10",
+                  ].join(" ")}
+                >
+                  {dataMarkDown.price}
                   {dataMarkDown.title === "Evénement" ? null : " euros"}
                 </h3>
-                <p className="text-center font-JosefinSans mt-10 px-10 xs:px-4">
+                <h3 className="text-center mt-2 mx-10 mb-2 xs:mx-2 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
+                  {dataMarkDown.title === "Famille"
+                    ? dataMarkDown.pricecplt
+                    : null}
+                </h3>
+                <p className="text-center font-JosefinSans px-10 xs:px-4">
                   {content}
                 </p>
               </div>

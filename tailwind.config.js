@@ -38,6 +38,9 @@ module.exports = {
         JosefinSans: ['"Josefin Sans"', "ui-sans-serif"],
         Montserrat: ["Montserrat", "ui-sans-serif"],
       },
+      outline: {
+        red: "1px solid #DC2626",
+      },
     },
   },
   variants: {

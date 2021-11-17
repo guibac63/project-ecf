@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../Components/Layout";
 import Head from "next/head";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
 
 export default function Contact() {
+  
+  const {register,handleSubmit,formState:{errors}} = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+
   return (
     <div>
       <Head>
@@ -14,18 +23,29 @@ export default function Contact() {
         </style>
       </Head>
       <Layout>
-        <div className="contactHeight">
-          <div className="py-8 w-5/5 xs:w-4/5 sm:w-4/6 md:w-3/6 xl:w-2/6 xl:h-5/6 mx-auto mt-2">
-            <h1 className="font-Montserrat  text-lightGreen text-xl md:text-3xl text-center mb-4">
+        <div className="contactHeight relative z-0">
+          <Image
+            className="blur-sm"
+            src="/photos/wedding-contact.jpg"
+            layout="fill"
+            alt="tree"
+            quality={100}
+            objectFit="cover"
+            loading="eager"
+            priority={true}
+          />
+          <div className="py-8 w-5/5 xs:w-4/5 sm:w-4/6 md:w-3/6 xl:w-2/6 xl:h-5/6 mx-auto">
+            <h1 className="z-10 font-Montserrat relative text-gray-600  lg:text-white text-xl md:text-3xl text-center mb-4 font-semibold">
               Pour me contacter
             </h1>
-            <div className=" border-2 border-darkViolet h-full bg-extraLightViolet mx-4 shadow-xl">
+            <div className="z-10 relative border-2 border-darkViolet h-full mx-4 shadow-xl">
               <form
-                className="font-JosefinSans flex flex-col p-4 lg:p-6 mx-6 lg:mx-2 xl:mx-0"
+                className="font-JosefinSans flex flex-col p-6 bg-extraLightViolet border-darkViolet"
                 method="POST"
                 name="photo-contact-form"
                 data-netlify="true"
                 action="/success"
+                onSubmit={handleSubmit(onSubmit)}
               >
                 {/* hidden input to allow netlify form works in Next js */}
                 <input
@@ -33,27 +53,61 @@ export default function Contact() {
                   name="form-name"
                   value="photo-contact-form"
                 />
+                {/* NAME */}
                 <label
                   className="text-lightGreen font-semibold my-2 md:text-xl"
                   htmlFor="nom"
                 >
                   Nom
                 </label>
+
                 <div className="flex flex-col lg:flex-row">
-                  <input
-                    className="lg:w-1/2 p-2"
-                    type="text"
-                    placeholder="Nom"
-                    id="nom"
-                    name="nom"
-                  />
-                  <input
-                    className="mt-4 lg:ml-4 lg:mt-0 lg:w-1/2 p-2"
-                    type="text"
-                    placeholder="Prénom"
-                    id="prenom"
-                    name="prenom"
-                  />
+                  {/* firstname input content */}
+                  <div className="lg:w-1/2 lg:mr-2">
+                    {/* firstname input */}
+                    <input
+                      className="lg:mr-4 lg:mt-0 w-full p-2"
+                      type="text"
+                      placeholder="Prénom"
+                      id="prenom"
+                      name="prenom"
+                      {...register("prenom", {
+                        required: "Donnée obligatoire",
+                      })}
+                    />
+                    {/* firstname error message */}
+                    <div className="h-6">
+                      {errors.prenom && (
+                        <span className="ml-1 text-red-600 font-semibold">
+                          {errors.prenom.message}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* name content */}
+                  <div className="lg:w-1/2">
+                    {/* name input content  */}
+                    <div className="lg:ml-2">
+                      {/* name input */}
+                      <input
+                        className="p-2 mt-4 lg:mt-0 w-full"
+                        type="text"
+                        placeholder="Nom"
+                        id="nom"
+                        name="nom"
+                        {...register("nom", { required: "Donnée obligatoire" })}
+                      />
+                      {/* name input error message */}
+                      <div className="h-6">
+                        {errors.nom && (
+                          <span className="ml-1 text-red-600 font-semibold">
+                            {errors.nom.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <label
                   className="text-lightGreen font-semibold my-2 md:text-xl"
@@ -67,7 +121,23 @@ export default function Contact() {
                   placeholder="E-mail"
                   id="email"
                   name="email"
+                  {...register("email", {
+                    required: "Donnée obligatoire",
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: "adresse mail invalide",
+                    },
+                  })}
                 />
+                {/* email error message */}
+                <div className="h-6">
+                  {errors.email && (
+                    <span className="ml-1 text-red-600 font-semibold">
+                      {errors.email.message}
+                    </span>
+                  )}
+                </div>
+
                 <label
                   className="text-lightGreen font-semibold my-2 md:text-xl"
                   htmlFor="categoryphoto"
