@@ -6,9 +6,11 @@ import { useForm } from "react-hook-form";
 
 export default function Contact() {
   
+  // react hook form
   const {register,handleSubmit,formState:{errors}} = useForm();
 
-  function encode(data) {
+  // encoding data function
+  const encode =(data) => {
     return Object.keys(data)
       .map(
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
@@ -16,8 +18,8 @@ export default function Contact() {
       .join("&");
   }
 
-  const onSubmit = (data,event) => {
-    event.preventDefault()
+  //submit data on netlify forms
+  const onSubmit = (data) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -26,7 +28,7 @@ export default function Contact() {
         ...data
       }),
     })
-      .then(() => console.log("Form successfully submitted"))
+      .then(() => navigate('/success/'))
       .catch((error) => alert(error));
       console.log(data)
   }
@@ -63,7 +65,6 @@ export default function Contact() {
                 method="POST"
                 name="photo-contact-form"
                 data-netlify="true"
-                action="/success"
                 onSubmit={handleSubmit(onSubmit)}
               >
                 {/* hidden input to allow netlify form works in Next js */}
