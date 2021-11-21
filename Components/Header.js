@@ -82,7 +82,7 @@ export default function Header() {
       </div>
       {/* mobile menu : display when pass to mobile format and click on hamburger icon menu*/}
       <motion.div
-        initial={{ x: 0 }}
+        initial={{ x: -800 }}
         animate={mobileMenu ? { x: 0 } : { x: -800 }}
         transition={{ type: "tween", duration: 0.4 }}
         // ref={mobileMenu}
