@@ -1,8 +1,19 @@
 import Head from "next/head";
 import Layout from "../Components/Layout";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+
+
 
 export default function Home() {
+
+  // first animation : progressive apparition of the main photo 
+  const variantsOne = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1.3 } },
+  };
+
   return (
     <div>
       <Head>
@@ -33,7 +44,12 @@ export default function Home() {
       <Layout>
         {/* background image of the application */}
         <div className="relative z-0 homeHeight">
-          <div className="z-0">
+          <motion.div
+            variants={variantsOne}
+            initial="hidden"
+            animate="visible"
+            className="z-0"
+          >
             <Image
               src="/photos/tree.jpg"
               layout="fill"
@@ -43,7 +59,7 @@ export default function Home() {
               loading="eager"
               priority={true}
             />
-          </div>
+          </motion.div>
           {/* Main title of the application */}
           <h1 className="z-10 text-white titleCenter text-center font-Montserrat ">
             <span className="text-xl md:text-5xl font-semibold">

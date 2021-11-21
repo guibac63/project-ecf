@@ -1,25 +1,20 @@
-import React, { createRef, useRef } from "react";
-import Image from "next/image";
+import React, { createRef, useRef, useState } from "react";
 import Link from "next/link";
-
+import { useRouter } from "next/dist/client/router";
+import { motion } from "framer-motion";
 
 
 export default function Header() {
+  // get url path of the active page
+  const { asPath } = useRouter();
 
+  // state to open mobile menu
+  const [mobileMenu, setMobileMenu] = useState(false);
 
-  const mobileMenu = useRef()
-  
-  
   // display and hide mobile menu on toggle hamburger button
   const handleMenu = (evt) => {
-    evt.currentTarget.classList.toggle('open');
-    mobileMenu.current.classList.toggle('hidden');
-
-    // mobileMenu.current.classList.contains("hidden")
-    //   ?  mobileMenu.current.classList.toggle("menuSlideIn")
-    //   : mobileMenu.current.classList.toggle("menuSlideOut");
-    //    console.log(mobileMenu.current.classList);
-  }
+    setMobileMenu(!mobileMenu);
+  };
 
   return (
     <div className="h-20 bg-lightViolet">
@@ -34,16 +29,37 @@ export default function Header() {
         {/* desktop menu */}
         <div className="text-white w-3/6 hidden md:block">
           <ul className="flex justify-around font-Montserrat text-xs md:text-base">
-            <li className="hover:font-bold">
+            <li
+              // underline in menu active link page
+              className={[
+                "hover:font-bold",
+                asPath === "/" ? "border-b-2" : null,
+              ].join(" ")}
+            >
               <Link href="/">ACCUEIL</Link>
             </li>
-            <li className="hover:font-bold">
+            <li
+              className={[
+                "hover:font-bold",
+                asPath === "/Gallery" ? "border-b-2" : null,
+              ].join(" ")}
+            >
               <Link href="/Gallery">GALERIE</Link>
             </li>
-            <li className="hover:font-bold">
+            <li
+              className={[
+                "hover:font-bold",
+                asPath === "/Prestation" ? "border-b-2" : null,
+              ].join(" ")}
+            >
               <Link href="/Prestation">PRESTATIONS</Link>
             </li>
-            <li className="hover:font-bold">
+            <li
+              className={[
+                "hover:font-bold",
+                asPath === "/Contact" ? "border-b-2" : null,
+              ].join(" ")}
+            >
               <Link href="/Contact">CONTACT</Link>
             </li>
           </ul>
@@ -51,7 +67,11 @@ export default function Header() {
         <div>
           <div className="text-white flex md:hidden">
             SVG
-            <div onClick={(evt) => handleMenu(evt)} id="nav-icon3">
+            <div
+              onClick={(evt) => handleMenu(evt)}
+              id="nav-icon3"
+              className={mobileMenu ? "open" : null}
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -61,9 +81,12 @@ export default function Header() {
         </div>
       </div>
       {/* mobile menu : display when pass to mobile format and click on hamburger icon menu*/}
-      <div
-        ref={mobileMenu}
-        className="relative z-10 text-white bg-gray-400 hidden md:hidden"
+      <motion.div
+        initial={{ x: 0 }}
+        animate={mobileMenu ? { x: 0 } : { x: -800 }}
+        transition={{ type: "tween", duration: 0.4 }}
+        // ref={mobileMenu}
+        className="relative z-30 text-white bg-gray-400 md:hidden"
       >
         <ul className="flex flex-col font-Montserrat text-xs ">
           <Link href="/">
@@ -87,7 +110,7 @@ export default function Header() {
             </li>
           </Link>
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 }

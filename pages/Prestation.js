@@ -5,10 +5,25 @@ import path, { join } from "path";
 import fs from "fs";
 import matter from "gray-matter";
 import Image from "next/dist/client/image";
+import { motion } from "framer-motion";
 
+export default function Prestation({ mkPresta }) {
+  // variable to animate global apparition of prestations 
+  const container = {
+    hidden: { scale: 0.8 },
+    show: {
+      scale: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
 
-export default function Prestation({mkPresta}) {
-
+  const item = {
+    hidden: { scale: 0.9 },
+    show: { scale: 1 },
+    transition: { type: "spring", duration: 1.5 },
+  };
 
   return (
     <div>
@@ -21,7 +36,12 @@ export default function Prestation({mkPresta}) {
         </style>
       </Head>
       <Layout>
-        <div className="homeHeight grid grid-cols-1 gap-6 px-4 xs:grid-cols-2 xs:px-4 xs:gap-4 md:gap-16 2xl:gap-28 md:px-24 lg:grid-cols-3 py-6 ">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="homeHeight grid grid-cols-1 gap-6 px-4 xs:grid-cols-2 xs:px-4 xs:gap-4 md:gap-16 2xl:gap-28 md:px-24 lg:grid-cols-3 py-6 "
+        >
           {mkPresta.map((presta) => {
             //extract data within the markdown
             const { dataMarkDown } = presta;
@@ -29,7 +49,15 @@ export default function Prestation({mkPresta}) {
 
             //render every prestation layout with all markdown data
             return (
-              <div className="border-2 border-lightViolet prestaHeight shadow-lg">
+              <motion.div
+                // animate the prestation card hovered 
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 2, type: "spring" },
+                  boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.3)",
+                }}
+                className="border-2 border-lightViolet prestaHeight shadow-lg"
+              >
                 <h2 className="text-center mt-8 mb-2 font-Montserrat text-xl md:text-2xl font-semibold text-lightGreen">
                   {dataMarkDown.title}
                 </h2>
@@ -66,10 +94,10 @@ export default function Prestation({mkPresta}) {
                 <p className="text-center font-JosefinSans px-10 xs:px-4">
                   {content}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </Layout>
     </div>
   );
@@ -90,9 +118,9 @@ export async function getStaticProps() {
     );
 
     // const imagesDetail = matter(images)
-    const { data: dataMarkDown,content } = matter(markDownOfPresta);
+    const { data: dataMarkDown, content } = matter(markDownOfPresta);
 
-    return { slug, dataMarkDown,content };
+    return { slug, dataMarkDown, content };
   });
 
   return {
