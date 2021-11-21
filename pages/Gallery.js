@@ -104,7 +104,7 @@ export default function Gallery({ mkImage }) {
               !selectedPhoto && "hover:scale-105",
               "shadow-lg",
               selectedPhoto ? "fixed" : "relative",
-              selectedPhoto ? "top-28 xs:top-10 md:top-10 xl:top-0" : null,
+              selectedPhoto ? "top-28 xs:top-0" : null,
               "z-20",
             ].join(" ")}
           >
