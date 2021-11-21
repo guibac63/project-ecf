@@ -3,11 +3,23 @@ import Layout from "../Components/Layout";
 import Head from "next/head";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
 
 export default function Contact() {
 
   const [successItem,setSuccessItem] = useState(false)
   
+  // variant for onclick animation button
+  const buttonAnimation = {
+    tap: {
+      scale: [1, 0.4, 1],
+      backgroundColor: "#50475e",
+    },
+    transition: { type: "spring", duration: 0.1 },
+  };
+
+
+
   // react hook form
   const {register,handleSubmit,formState:{errors}} = useForm();
 
@@ -22,17 +34,23 @@ export default function Contact() {
 
   //submit data to netlify forms
   const onSubmit = (data) => {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": "photo-contact-form",
-        ...data
-      }),
-    })
-      .then(() => setSuccessItem(true))
-      .catch((error) => alert(error));
-      console.log(data)
+
+    setTimeout(()=>{
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "photo-contact-form",
+          ...data
+        }),
+      })
+        .then(() => setSuccessItem(true))
+        .catch((error) => alert(error));
+        console.log(data)
+    },500)
+
+
+
   }
 
   return (
@@ -199,7 +217,9 @@ export default function Contact() {
                     rows="3"
                     {...register("message")}
                   />
-                  <button
+                  <motion.button
+                    variants={buttonAnimation}
+                    whileTap='tap'
                     className="mt-4 bg-darkGreen px-2 2xl:w-1/4 h-10 text-white font-semibold rounded-lg mx-auto"
                     type="submit"
                   >
@@ -210,7 +230,7 @@ export default function Contact() {
                       alt="lens icon"
                     />
                     <span>YER</span>
-                  </button>
+                  </motion.button>
                 </form>
               </div>
             </div>
