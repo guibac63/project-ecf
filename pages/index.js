@@ -17,17 +17,18 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Charles Cantin photographe</title>
-        <meta
-          name="description"
-          content="Bienvenue sur le site de Charles Cantin, photographe professionnel à Clermont-Ferrand : évenementiel, personnel et professionnel, en studio ou à domicile"
-        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charset="utf-8" />
+        <title>Charles Cantin photographe</title>
+        <meta name="Content-Type" content="UTF-8"/>
+        <meta name="Content-Language" content="fr"/>
+        <meta name="Description" content="Bienvenue sur le site de Charles Cantin, photographe professionnel à Clermont-Ferrand : évènementiel, personnel et professionnel, en studio ou à domicile"/>
+        <meta name="Subject" content="Photographie"/>
+        <meta name="Author" content="guibacsolutions"/>
+        <meta name="Publisher" content="guibacsolutions"/>
+        <meta name="Identifier-Url" content="https://zen-mestorf-4d5f9c.netlify.app"/>
         {/* Twitter card data */}
         <meta name="twitter:card" content="summary" />
         {/* meta Facebook and LinkedIn OpenGraph */}
-        {/* ATTENTION: A REPRENDRE (urls, description , etc ...)!!!!!!!!!!!!!!!!!!!!!!! */}
         <meta property="og:title" content="accueil" />
         <meta property="og:url" content="http://ccantin.com/" />
         <meta property="og:image" content="https://exemple.com/image-fb.png" />
