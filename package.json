@@ -4,8 +4,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    
-    "export":"npm run build && next export"
   },
   "dependencies": {
     "framer-motion": "^5.3.0",
