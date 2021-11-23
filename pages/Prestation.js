@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import Layout from "../Components/Layout";
 import path, { join } from "path";
 import fs from "fs";

@@ -1,7 +1,7 @@
-import Head from "next/head";
 import Layout from "../Components/Layout";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Home() {
   // first animation : progressive apparition of the main photo

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Layout from "../Components/Layout";
-import Head from "next/head";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";

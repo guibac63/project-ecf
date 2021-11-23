@@ -4,7 +4,6 @@ import path, { join } from "path";
 import fs from "fs";
 import matter from "gray-matter";
 import Image from "next/dist/client/image";
-import Head from "next/head";
 import { motion } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
