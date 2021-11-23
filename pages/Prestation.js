@@ -35,9 +35,11 @@ export default function Prestation({ mkPresta }) {
         >
           {mkPresta.map((presta) => {
             //extract data within the markdown
-            const { dataMarkDown } = presta;
+            const { dataConvert } = presta
+            //convert data stringified in object JSON
+            const datajson = JSON.parse(dataConvert)
             const { content } = presta;
-
+           
             //render every prestation layout with all markdown data
             return (
               <motion.div
@@ -50,18 +52,18 @@ export default function Prestation({ mkPresta }) {
                 className="border-2 border-lightViolet prestaHeight shadow-lg"
               >
                 <h2 className="text-center mt-8 mb-2 font-Montserrat text-xl md:text-2xl font-semibold text-lightGreen">
-                  {dataMarkDown.title}
+                  {datajson.title}
                 </h2>
                 <div className="relative border p-0 h-2/6 mx-4 xs:h-1/4 md:h-1/3 lg:h-1/4 xl:h-1/3 2xl:mx-12 shadow-lg ">
                   <Image
-                    src={dataMarkDown.cover_image}
-                    alt={dataMarkDown.title}
+                    src={datajson.thumbnail}
+                    alt={datajson.title}
                     quality={100}
                     layout="fill"
                   />
                 </div>
                 <h3 className="text-center mt-2 mx-10 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
-                  {dataMarkDown.description}
+                  {datajson.description}
                 </h3>
                 <h3
                   className={[
@@ -71,16 +73,14 @@ export default function Prestation({ mkPresta }) {
                     "font-JosefinSans",
                     "xl:text-lg",
                     "text-lightViolet",
-                    dataMarkDown.title === "Famille" ? "mb-2" : "mb-10",
+                    datajson.title === "Famille" ? "mb-2" : "mb-10",
                   ].join(" ")}
                 >
-                  {dataMarkDown.price}
-                  {dataMarkDown.title === "Evénement" ? null : " euros"}
+                  {datajson.price}
+                  {datajson.title === "Evénement" ? null : " euros"}
                 </h3>
                 <h3 className="text-center mt-2 mx-10 mb-2 xs:mx-2 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
-                  {dataMarkDown.title === "Famille"
-                    ? dataMarkDown.pricecplt
-                    : null}
+                  {datajson.title === "Famille" ? datajson.price : null}
                 </h3>
                 <p className="text-center font-JosefinSans px-10 xs:px-4">
                   {content}
@@ -110,8 +110,10 @@ export async function getStaticProps() {
 
     // const imagesDetail = matter(images)
     const { data: dataMarkDown, content } = matter(markDownOfPresta);
+    
+    const dataConvert = JSON.stringify(dataMarkDown)
 
-    return { slug, dataMarkDown, content };
+    return { slug, dataConvert, content };
   });
 
   return {
