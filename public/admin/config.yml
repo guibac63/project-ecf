@@ -21,12 +21,12 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "image" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Category", name: "category", widget: "list", fields: {
-        - { label: "Mariage",name: "mariage", widget: "string"}
-        - { label: "Grossesse",name: "grossesse", widget: "string"}
-        - { label: "Bébé",name: "bebe", widget: "string"}
-        - { label: "Famille",name: "famille", widget: "string"}
-        - { label: "Baptême",name: "bapteme", widget: "string"}
-        - { label: "Couple",name: "couple", widget: "string"}
+        - { label: "Mariage", name: "mariage", widget: "string"}
+        - { label: "Grossesse", name: "grossesse", widget: "string"}
+        - { label: "Bébé", name: "bebe", widget: "string"}
+        - { label: "Famille", name: "famille", widget: "string"}
+        - { label: "Baptême", name: "bapteme", widget: "string"}
+        - { label: "Couple", name: "couple", widget: "string"}
       }}
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
