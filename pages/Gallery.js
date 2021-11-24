@@ -5,10 +5,16 @@ import fs from "fs";
 import matter from "gray-matter";
 import Image from "next/dist/client/image";
 import { motion } from "framer-motion";
-import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
 
 export default function Gallery({ mkImage }) {
+
+  //extract data and conversion to JSON format
+  const imageData = mkImage.map((image)=>{
+    const {dataString} = image
+    return JSON.parse(dataString)
+  })
+
   // display only select category of photos
   const [selectCategory, setSelectCategory] = useState("");
   //state to manage the scaling of a selected photo
@@ -46,6 +52,7 @@ export default function Gallery({ mkImage }) {
         className="flex flex-wrap p-2 gallery justify-center items-center min-h-3/4"
       >
         {photoSelection.map((image, index) => {
+          
           return (
             <motion.div
               key={index}
@@ -68,26 +75,25 @@ export default function Gallery({ mkImage }) {
                   href="#"
                   // enable scaled display of the photo if the link is clicked,else disable link
                   onClick={
-                    !selectedPhoto
-                      ? (evt) => handlePhoto(evt, image.dataMarkDown)
-                      : null
+                    !selectedPhoto ? (evt) => handlePhoto(evt, image) : null
                   }
                 >
                   <Image
-                    src={image.dataMarkDown.cover_image}
-                    alt={image.dataMarkDown.title}
+                    src={image.thumbnail}
+                    alt={image.title}
                     quality={100}
                     layout="fill"
                   />
                 </a>
               </div>
               <h3 className="pt-2 font-JosefinSans text-center">
-                {image.dataMarkDown.title}
+                {image.title}
               </h3>
             </motion.div>
           );
         })}
 
+        {/* if click on photo appeared scaled on the screenk */}
         {selectedPhoto && (
           <motion.div
             initial={{ scale: 0 }}
@@ -110,7 +116,7 @@ export default function Gallery({ mkImage }) {
             <div className="z-50 h-full border border-black relative">
               <a href="#">
                 <Image
-                  src={selectedPhoto.cover_image}
+                  src={selectedPhoto.thumbnail}
                   alt={selectedPhoto.title}
                   quality={100}
                   layout="fill"
@@ -164,7 +170,7 @@ export default function Gallery({ mkImage }) {
                 <option className="text-center" value="bapteme">
                   Baptême
                 </option>
-                <option className="text-center" value="Couple">
+                <option className="text-center" value="couple">
                   Couple
                 </option>
               </select>
@@ -175,15 +181,15 @@ export default function Gallery({ mkImage }) {
           {!!selectCategory ? (
             // {/* render every images in markdown files which match with selected category  */}
             <GalleryPhoto
-              photoSelection={mkImage.filter(
+              photoSelection={imageData.filter(
                 (image) =>
-                  image.dataMarkDown.excerpt.toLowerCase() ==
+                  image.category.toLowerCase() ==
                   selectCategory.toLowerCase()
               )}
             />
           ) : (
             // {/* render every images in markdown files with titles at loading or select without category  */}
-            <GalleryPhoto photoSelection={mkImage} />
+            <GalleryPhoto photoSelection={imageData} />
           )}
         </div>
       </Layout>
@@ -209,7 +215,9 @@ export async function getStaticProps() {
     // const imagesDetail = matter(images)
     const { data: dataMarkDown } = matter(markDownOfImage);
 
-    return { slug, dataMarkDown };
+    const dataString = JSON.stringify(dataMarkDown)
+
+    return { slug, dataString };
   });
 
   return {

@@ -108,6 +108,10 @@ export default function Contact() {
                           name="prenom"
                           {...register("prenom", {
                             required: "Donnée obligatoire",
+                            pattern: {
+                              value: /^[-'a-zA-ZÀ-ÖØ-öø-ÿ]+$/,
+                              message: "saisie invalide",
+                            },
                           })}
                         />
                         {/* firstname error message */}
@@ -133,6 +137,10 @@ export default function Contact() {
                             name="nom"
                             {...register("nom", {
                               required: "Donnée obligatoire",
+                              pattern: {
+                                value: /^[-'a-zA-ZÀ-ÖØ-öø-ÿ]+$/,
+                                message: "saisie invalide",
+                              },
                             })}
                           />
                           {/* name input error message */}
@@ -161,7 +169,8 @@ export default function Contact() {
                       {...register("email", {
                         required: "Donnée obligatoire",
                         pattern: {
-                          value: /\S+@\S+\.\S+/,
+                          value:
+                            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                           message: "adresse mail invalide",
                         },
                       })}

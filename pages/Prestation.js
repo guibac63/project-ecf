@@ -9,11 +9,13 @@ import { motion } from "framer-motion";
 export default function Prestation({ mkPresta }) {
   // variable to animate global apparition of prestations 
   const container = {
-    hidden: { scale: 0.8 },
+    hidden: { scale: 0.8, opacity:0 },
     show: {
       scale: 1,
+      opacity: 1,
       transition: {
         duration: 1,
+        delay: 1,
       },
     },
   };
@@ -33,7 +35,7 @@ export default function Prestation({ mkPresta }) {
           animate="show"
           className="homeHeight grid grid-cols-1 gap-6 px-4 xs:grid-cols-2 xs:px-4 xs:gap-4 md:gap-16 2xl:gap-28 md:px-24 lg:grid-cols-3 py-6 "
         >
-          {mkPresta.map((presta) => {
+          {mkPresta.map((presta,index) => {
             //extract data within the markdown
             const { dataConvert } = presta
             //convert data stringified in object JSON
@@ -43,13 +45,14 @@ export default function Prestation({ mkPresta }) {
             //render every prestation layout with all markdown data
             return (
               <motion.div
+                key={index}
                 // animate the prestation card hovered
                 whileHover={{
                   scale: 1.05,
                   transition: { duration: 2, type: "spring" },
                   boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.3)",
                 }}
-                className="border-2 border-lightViolet prestaHeight shadow-lg"
+                className="border border-lightViolet prestaHeight shadow-lg"
               >
                 <h2 className="text-center mt-8 mb-2 font-Montserrat text-xl md:text-2xl font-semibold text-lightGreen">
                   {datajson.title}

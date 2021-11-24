@@ -18,19 +18,20 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Layout", name: "layout", widget: "hidden", default: "image" }
-      - { label: "Title", name: "title", widget: "string" }
-      - label: "Category"
+      - { label: "Titre", name: "title", required: true, widget: "string" }
+      - label: "Catégorie"
         name: "category"
-        widget: "list"
-        fields:
-          - { label: "Mariage", name: "mariage", widget: "string" }
-          - { label: "Grossesse", name: "grossesse", widget: "string" }
-          - { label: "Bébé", name: "bebe", widget: "string" }
-          - { label: "Famille", name: "famille", widget: "string" }
-          - { label: "Baptême", name: "bapteme", widget: "string" }
-          - { label: "Couple", name: "couple", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+        required: true
+        widget: "select"
+        options:
+          - { label: "Mariage", value: "mariage" }
+          - { label: "Grossesse", value: "grossesse" }
+          - { label: "Bébé", value: "bebe" }
+          - { label: "Famille", value: "famille" }
+          - { label: "Baptême", value: "bapteme" }
+          - { label: "Couple", value: "couple" }
+      - { label: "Image", name: "thumbnail", required: true, widget: "image" }
+      - { label: "Date publication", name: "date", widget: "datetime" }
 
   # to add prestation description with price
   - name: "prestation" # Used in routes
@@ -45,9 +46,15 @@ collections:
           widget: "hidden",
           default: "prestation",
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
-      - { label: "description", name: "description", widget: "string" }
-      - { label: "Price", name: "price", widget: "number" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Titre", name: "title", required: true, widget: "string" }
+      - { label: "Date publication", name: "date", widget: "datetime" }
+      - { label: "Image", required: true, name: "thumbnail", widget: "image" }
+      - {
+          label: "Description",
+          name: "description",
+          required: true,
+          widget: "string",
+        }
+      - { label: "Prix", name: "price", widget: "number" }
+      - { label: "Prix complément", name: "price complement", widget: "string" }
+      - { label: "Message", name: "body", widget: "markdown" }
