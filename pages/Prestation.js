@@ -7,15 +7,15 @@ import Image from "next/dist/client/image";
 import { motion } from "framer-motion";
 
 export default function Prestation({ mkPresta }) {
-  // variable to animate global apparition of prestations 
+  // variable to animate global apparition of prestations
   const container = {
-    hidden: { scale: 0.8, opacity:0 },
+    hidden: { scale: 0.8, opacity: 0 },
     show: {
       scale: 1,
       opacity: 1,
       transition: {
-        duration: 1,
-        delay: 1,
+        duration: 0.7,
+        delay: 0.5,
       },
     },
   };
@@ -35,13 +35,14 @@ export default function Prestation({ mkPresta }) {
           animate="show"
           className="homeHeight grid grid-cols-1 gap-6 px-4 xs:grid-cols-2 xs:px-4 xs:gap-4 md:gap-16 2xl:gap-28 md:px-24 lg:grid-cols-3 py-6 "
         >
-          {mkPresta.map((presta,index) => {
+          {mkPresta.map((presta, index) => {
             //extract data within the markdown
-            const { dataConvert } = presta
+            const { dataConvert } = presta;
             //convert data stringified in object JSON
-            const datajson = JSON.parse(dataConvert)
+            const datajson = JSON.parse(dataConvert);
+            // extract content from within markdown
             const { content } = presta;
-           
+
             //render every prestation layout with all markdown data
             return (
               <motion.div
@@ -80,10 +81,10 @@ export default function Prestation({ mkPresta }) {
                   ].join(" ")}
                 >
                   {datajson.price}
-                  {datajson.title === "Evénement" ? null : " euros"}
+                  {datajson.title === "Evénement" ? datajson.pricecplt : " euros"}
                 </h3>
                 <h3 className="text-center mt-2 mx-10 mb-2 xs:mx-2 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
-                  {datajson.title === "Famille" ? datajson.price : null}
+                  {datajson.title === "Famille" ? datajson.pricecplt : null}
                 </h3>
                 <p className="text-center font-JosefinSans px-10 xs:px-4">
                   {content}
@@ -113,8 +114,8 @@ export async function getStaticProps() {
 
     // const imagesDetail = matter(images)
     const { data: dataMarkDown, content } = matter(markDownOfPresta);
-    
-    const dataConvert = JSON.stringify(dataMarkDown)
+
+    const dataConvert = JSON.stringify(dataMarkDown);
 
     return { slug, dataConvert, content };
   });

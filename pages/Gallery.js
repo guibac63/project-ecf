@@ -48,7 +48,7 @@ export default function Gallery({ mkImage }) {
       <motion.div
         initial={firstAnimation ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.6 }}
+        transition={{ duration: 1.6,delay:0.7 }}
         className="flex flex-wrap p-2 gallery justify-center items-center min-h-3/4"
       >
         {photoSelection.map((image, index) => {

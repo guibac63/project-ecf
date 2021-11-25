@@ -55,6 +55,11 @@ collections:
           required: true,
           widget: "string",
         }
-      - { label: "Prix", name: "price", widget: "number" }
-      - { label: "Prix complément", name: "price complement", widget: "string" }
+      - { label: "Prix", name: "price", widget: "number", required: false }
+      - {
+          label: "Prix complément",
+          name: "pricecplt",
+          widget: "string",
+          required: false,
+        }
       - { label: "Message", name: "body", widget: "markdown" }
