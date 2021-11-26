@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -38,7 +39,7 @@ export default function Footer() {
             transition={{ type: "spring", bounce: 0.5 }}
             className="flex items-center pb-2 md:pb-0 mx-auto md:mx-0"
           >
-            <a href="#">Mentions légales</a>
+            <Link href="/Mentions">Mentions légales</Link>
           </motion.li>
           {/* Facebook icon */}
           <motion.li
