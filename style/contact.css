@@ -1,3 +1,4 @@
+/* height of the contact layout page */
 .contactHeight {
   min-height: calc(100vh - 10rem);
 }

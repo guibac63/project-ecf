@@ -4,11 +4,44 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 
+//contact component in "CONTACT" page
 export default function Contact() {
+  const [successItem, setSuccessItem] = useState(false);
 
-  const [successItem,setSuccessItem] = useState(false)
-  
-  // variant for onclick animation button
+  // react hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // encoding data function
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+
+  //submit data to netlify forms
+  const onSubmit = (data) => {
+    setTimeout(() => {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "photo-contact-form",
+          ...data,
+        }),
+      })
+        .then(() => setSuccessItem(true))
+        .catch((error) => alert(error));
+      console.log(data);
+    }, 500);
+  };
+
+  // variant for onclick animation button : framer motion
   const buttonAnimation = {
     tap: {
       scale: [1, 0.4, 1],
@@ -16,41 +49,6 @@ export default function Contact() {
     },
     transition: { type: "spring", duration: 0.1 },
   };
-
-
-
-  // react hook form
-  const {register,handleSubmit,formState:{errors}} = useForm();
-
-  // encoding data function
-  const encode =(data) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  }
-
-  //submit data to netlify forms
-  const onSubmit = (data) => {
-
-    setTimeout(()=>{
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "photo-contact-form",
-          ...data
-        }),
-      })
-        .then(() => setSuccessItem(true))
-        .catch((error) => alert(error));
-        console.log(data)
-    },500)
-
-
-
-  }
 
   return (
     <div>
@@ -71,7 +69,7 @@ export default function Contact() {
             // if the form is succesfully posted display success component
             !successItem ? (
               <div className="py-8 w-5/5 xs:w-4/5 sm:w-4/6 md:w-3/6 xl:w-2/6 xl:h-5/6 mx-auto">
-                <h1 className="z-10 font-Montserrat relative text-gray-600  lg:text-white text-xl md:text-3xl text-center mb-4 font-semibold">
+                <h1 className="z-10 font-Montserrat relative text-gray-600 text-xl md:text-3xl text-center mb-4 font-semibold">
                   Pour me contacter
                 </h1>
                 <div className="z-10 relative border-2 border-darkViolet h-full mx-4 shadow-xl">
