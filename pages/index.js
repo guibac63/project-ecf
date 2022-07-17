@@ -7,7 +7,7 @@ export default function Home() {
   // first animation : progressive apparition of the main photo
   const variantsOne = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 1.3 } },
+    visible: { opacity: 1, transition: { duration: 1.1 } },
   };
 
   // connect invited user to admin

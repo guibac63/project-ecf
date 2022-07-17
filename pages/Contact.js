@@ -37,7 +37,6 @@ export default function Contact() {
       })
         .then(() => setSuccessItem(true))
         .catch((error) => alert(error));
-      console.log(data);
     }, 500);
   };
 
@@ -54,15 +53,11 @@ export default function Contact() {
     <div>
       <Layout>
         <div className="contactHeight relative z-0">
-          <Image
-            className="blur-sm"
+          <img
+            className="blur-sm object-cover h-full w-full absolute"
             src="/photos/wedding-contact.jpg"
             layout="fill"
             alt="tree"
-            quality={100}
-            objectFit="cover"
-            loading="eager"
-            priority={true}
           />
 
           {

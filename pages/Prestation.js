@@ -33,7 +33,7 @@ export default function Prestation({ mkPresta }) {
           variants={container}
           initial="hidden"
           animate="show"
-          className="homeHeight grid grid-cols-1 gap-6 px-4 xs:grid-cols-2 xs:px-4 xs:gap-4 md:gap-16 2xl:gap-28 md:px-24 lg:grid-cols-3 py-6 "
+          className="homeHeight grid grid-cols-1 gap-4 px-4 xs:grid-cols-2 xs:px-4 xs:gap-4 md:gap-16 2xl:gap-28 md:px-24 lg:grid-cols-3 py-6 "
         >
           {mkPresta.map((presta, index) => {
             //extract data within the markdown
@@ -53,17 +53,16 @@ export default function Prestation({ mkPresta }) {
                   transition: { duration: 2, type: "spring" },
                   boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.3)",
                 }}
-                className="border border-lightViolet prestaHeight shadow-lg"
+                className="h-176 s:h-160 lg:h-176 lg:px-4 xl:h-160  border border-lightViolet shadow-lg"
               >
                 <h2 className="text-center mt-8 mb-2 font-Montserrat text-xl md:text-2xl font-semibold text-lightGreen">
                   {datajson.title}
                 </h2>
                 <div className="relative border p-0 h-2/6 mx-4 xs:h-1/4 md:h-1/3 lg:h-1/4 xl:h-1/3 2xl:mx-12 shadow-lg ">
-                  <Image
+                  <img
+                  className="object-cover h-full w-full"
                     src={datajson.thumbnail}
                     alt={datajson.title}
-                    quality={100}
-                    layout="fill"
                   />
                 </div>
                 <h3 className="text-center mt-2 mx-10 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
@@ -81,12 +80,14 @@ export default function Prestation({ mkPresta }) {
                   ].join(" ")}
                 >
                   {datajson.price}
-                  {datajson.title === "Evénement" ? datajson.pricecplt : " euros"}
+                  {datajson.title === "Evénement"
+                    ? datajson.pricecplt
+                    : " euros"}
                 </h3>
                 <h3 className="text-center mt-2 mx-10 mb-2 xs:mx-2 font-semibold font-JosefinSans xl:text-lg text-lightViolet">
                   {datajson.title === "Famille" ? datajson.pricecplt : null}
                 </h3>
-                <p className="text-center font-JosefinSans px-10 xs:px-4">
+                <p className="text-justify text-lg font-JosefinSans xs:px-4 px-6 font-medium py-3">
                   {content}
                 </p>
               </motion.div>

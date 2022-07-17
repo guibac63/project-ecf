@@ -1,4 +1,5 @@
 /* height of the prestation layout */
-.prestaHeight{
-  min-height: 600px;
+.presta-height-small{
+  height: 750px;
 }
+

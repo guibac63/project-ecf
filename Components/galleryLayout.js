@@ -36,7 +36,7 @@ export default function GalleryLayout({photoSelection}) {
     <motion.div
       initial={firstAnimation ? { opacity: 1 } : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1.6, delay: 0.7 }}
+      transition={{ duration: 0.5, delay: 0.3 }}
       className="flex flex-wrap p-2 gallery justify-center items-center min-h-3/4"
     >
       {photoSelection.map((image, index) => {
@@ -59,21 +59,22 @@ export default function GalleryLayout({photoSelection}) {
           >
             <div className=" relative h-48 border border-black">
               <a
+                className='h-full w-full block'
                 href="#"
                 // enable scaled display of the photo if the link is clicked,else disable link
                 onClick={
                   !selectedPhoto ? (evt) => handlePhoto(evt, image) : null
                 }
               >
-                <Image
+                <img
+                  className='object-cover h-full w-full'
                   src={image.thumbnail}
                   alt={image.title}
-                  quality={100}
-                  layout="fill"
+                  
                 />
               </a>
             </div>
-            <h3 className="pt-2 font-JosefinSans text-center">{image.title}</h3>
+            <h3 className="pt-2 font-JosefinSans text-center font-bold">{image.title}</h3>
           </motion.div>
         );
       })}
